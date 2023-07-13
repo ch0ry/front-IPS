@@ -1,11 +1,22 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Agregar Personas</button>
-  </mat-menu>
-  <span class="spacer"></span>
-  <span>IPS Software</span>
-  <span class="spacer"></span>
-</mat-toolbar>
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+
+  <mat-drawer #drawer mode="side" [(opened)]="opened" (opened)="events.push('open!')">
+    Aqui van las opciones
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()" aria-label="Example icon-button with a menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <span>IPS Software</span>
+      <span class="spacer"></span>
+    </mat-toolbar>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+
+
