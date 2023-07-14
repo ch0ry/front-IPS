@@ -1,7 +1,11 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
 
-  <mat-drawer #drawer mode="side" [(opened)]="opened" (opened)="events.push('open!')">
-    Aqui van las opciones
+  <mat-drawer class="side-drawer" #drawer mode="side" [(opened)]="opened" (opened)="events.push('open!')">
+    <div class="drawer-div">
+    <button mat-button class="drawer-button">Agregar personas</button>
+    
+    </div>
+
   </mat-drawer>
 
   <mat-drawer-content>
@@ -16,6 +20,8 @@
   </mat-drawer-content>
 
 </mat-drawer-container>
+
+<router-outlet></router-outlet>
 
 
 
