@@ -16,20 +16,20 @@ export class PacientesService {
 
   getPacientesPorId(id: number): Observable<Paciente[]>{
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Paciente>(url);
+    return this.http.get<Paciente>(Api_url);
   }
 
   crearPaciente(paciente: Paciente): Observable<Paciente> {
-    return this.http.post<Paciente>(this.apiUrl, paciente);
+    return this.http.post<Paciente>(this.Api_url, paciente);
   }
 
   actualizarPaciente(paciente: Paciente): Observable<Paciente> {
     const url = `${this.apiUrl}/${paciente.id}`;
-    return this.http.put<Paciente>(url, paciente);
+    return this.http.put<Paciente>(Api_url, paciente);
   }
   eliminarPaciente(id: number): Observable<void> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<void>(url);
+    const url = `${this.Api_url}/${id}`;
+    return this.http.delete<void>(Api_url);
   }
 
   }
