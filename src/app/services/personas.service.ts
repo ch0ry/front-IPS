@@ -8,14 +8,14 @@ import { Persona } from 'src/app/models/persona.models.ts'
 export class PersonasService {
   private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   getPersonas(): Observable <Persona[]> {
        return this.http.get<Persona[]>(this.Api_url);
      }
 
   getPersonasPorId(id: number): Observable<Persona[]>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Persona>(this.Api_url);
+    return this.http.get<Persona[]>(this.Api_url);
     }
 
   createPersona(persona: Persona): Observable<Persona> {

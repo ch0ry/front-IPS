@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Paciente } from 'src/app/models/paciente.models';
-import { Observable} from "rxjs";
+import { Paciente } from 'src/app/models/paciente.models.ts';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class PacientesService {
     return this.http.get<Paciente[]>(this.Api_url);
   }
 
-  getPacientesPorId(id: number): Observable<Paciente>{
+  getPacientesPorId(id: number): Observable<Paciente[]>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Paciente>(this.Api_url);
+    return this.http.get<Paciente[]>(this.Api_url);
   }
 
   crearPaciente(paciente: Paciente): Observable<Paciente> {

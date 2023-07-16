@@ -16,7 +16,7 @@ export class MedicamentosService {
 
    getMedicamentosPorId(id: number): Observable<Medicamento[]>{
      const url = `${this.Api_url}/${id}`;
-     return this.http.get<Medicamento>(this.Api_url);
+     return this.http.get<Medicamento[]>(this.Api_url);
    }
 
    crearMedicamento(medicamento: Medicamento): Observable<Medicamento> {
