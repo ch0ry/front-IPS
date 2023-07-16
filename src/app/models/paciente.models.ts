@@ -1,7 +1,7 @@
-import { Persona } from 'src/app/models/persona.models.ts';
+import { Persona } from 'src/app/models/persona.models';
 
 export class Paciente extends Persona {
-  id: number;
+  override id: number;
   idPersona: number;
   persona: Persona;
 

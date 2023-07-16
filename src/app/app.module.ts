@@ -14,7 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { PersonasComponent } from './components/personas/personas.component';
 import { HttpClientModule } from '@angular/common/http';
 //services
-import { PacientesService } from './components.services';
+import { PacientesService } from './services/pacientes.service';
 
 
 
@@ -33,7 +33,8 @@ import { PacientesService } from './components.services';
     MatSidenavModule,
     MatCheckboxModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PersonasComponent
   ],
   providers: [
     PacientesService
