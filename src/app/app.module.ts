@@ -20,8 +20,7 @@ import { PacientesService } from './components.services';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PersonasComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

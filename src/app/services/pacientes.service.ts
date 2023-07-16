@@ -32,5 +32,5 @@ export class PacientesService {
     return this.http.delete<void>(Api_url);
   }
 
-  }
+
 }
