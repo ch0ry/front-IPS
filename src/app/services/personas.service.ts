@@ -15,7 +15,7 @@ export class PersonasService {
 
   getPersonasPorId(id: number): Observable<Persona[]>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Persona>(Api_url);
+    return this.http.get<Persona>(this.Api_url);
     }
 
   createPersona(persona: Persona): Observable<Persona> {
@@ -29,7 +29,7 @@ export class PersonasService {
   deletePersona(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
     return this.http.delete<void>(Api_url);
-      
+
      }
 
 }
