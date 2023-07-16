@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Paciente } from 'src/app/models/paciente.models.ts'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacientesService {
-  private Api_url = "";
+  private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class PacientesService {
   }
 
   getPacientesPorId(id: number): Observable<Paciente[]>{
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.Api_url}/${id}`;
     return this.http.get<Paciente>(Api_url);
   }
 
