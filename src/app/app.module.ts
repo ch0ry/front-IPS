@@ -12,6 +12,11 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import { PersonasComponent } from './components/personas/personas.component';
+import { HttpClientModule } from '@angular/common/http';
+//services
+import { PacientesService } from './components.services';
+
+
 
 @NgModule({
   declarations: [
@@ -28,9 +33,12 @@ import { PersonasComponent } from './components/personas/personas.component';
     MatMenuModule,
     MatSidenavModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PacientesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
