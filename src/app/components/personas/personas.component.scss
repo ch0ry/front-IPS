@@ -1,0 +1,33 @@
+.form-card {
+  width: 70%;
+
+}
+
+
+.form-header {
+  align-self: center;
+  justify-self: center;
+  padding-top: 2rem;
+}
+
+.form-div {
+  display: flex;
+  padding-top: 3rem;
+  align-content: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.r {
+  grid-area: r;
+}
+
+.c1 {
+
+  grid-area: c1;
+}
+
+.c2 {
+
+  grid-area: c2;
+}
