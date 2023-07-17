@@ -1,66 +1,57 @@
  <div class="form-div">
  <mat-card class="form-card">
   <mat-card-title class="form-header">Agregar Persona</mat-card-title>
-  <mat-card-content style="height: 100%; justify-items: center">
-    <div style="display:flex; justify-content: center; align-content: center; padding-top: 2rem">
-    <mat-grid-list cols="2" rowHeight="5rem" style="width: 60%; height: fit-content">
-      <mat-grid-tile>
-        <mat-form-field>
-        <mat-label>Nombres</mat-label>
-        <input type="text" matInput>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      	<mat-form-field>
-      		<mat-label>Test</mat-label>
-      		<input type="text" matInput>
-      	</mat-form-field>
-      </mat-grid-tile>
+  <mat-card-content style="height: 100%;">
+    <form style="display: flex; justify-content: center">
+            <table >
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input [(ngModel)]=persona.nombre name="nombre" matInput placeholder="Nombre Completo">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input matInput placeholder="Documento">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Rol</span><br><br>
+                        <mat-radio-group name="role" [(ngModel)]=role (change)="updateDate(role)">
+                            <mat-radio-button value="1">Médico</mat-radio-button>
+                            <mat-radio-button value="2">Paciente</mat-radio-button>
+                        </mat-radio-group>
+                    </td>
 
-    </mat-grid-list>
-    </div>
-    <div>
-      <button matButton>Send</button>
-    </div>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <<mat-form-field class="demo-full-width">
+                            <input matInput type="number" placeholder="Teléfono">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                      <div class="example-button-container">
+                        <button mat-flat-button color="primary">Submit</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
 
   </mat-card-content>
-
-
   </mat-card>
 </div>
