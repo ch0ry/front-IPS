@@ -2,7 +2,7 @@
 
   <mat-drawer class="side-drawer" #drawer mode="side" [(opened)]="opened" (opened)="events.push('open!')">
     <div class="drawer-div">
-    <button mat-button class="drawer-button">Agregar personas</button>
+    <button mat-button class="drawer-button" (click)="this.router.navigate(['personas'])">Agregar personas</button>
     
     </div>
 

@@ -6,7 +6,7 @@
  <mat-card class="form-card">
   <mat-card-title class="form-header">Agregar Persona</mat-card-title>
   <mat-card-content style="height: 100%;">
-    <form style="display: flex; justify-content: center" (ngSubmit)="submit()">
+    <form style="display: flex; justify-content: center" (ngSubmit)="createPersona()">
             <table>
                 <tr>
                     <td>
@@ -91,6 +91,10 @@
             <td mat-cell *matCellDef="let element">
             <button mat-icon-button (click)="openDialog(element)">
             <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="deletePersona(element.id)">
+            	<mat-icon>delete_outline</mat-icon>
             </button>
             </td>
           </ng-container>

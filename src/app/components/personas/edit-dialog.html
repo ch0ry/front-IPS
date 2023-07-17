@@ -5,26 +5,30 @@
                 <tr>
                     <td>
                         <mat-form-field class="demo-full-width">
-                            <input [(ngModel)]=newPersona.nombre name="nombre" matInput placeholder="persona.nombre">
+                        <mat-label>Nombre</mat-label>
+                            <input [(ngModel)]=newPersona.nombre name="nombre" matInput>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]="newPersona.documento" name="documento" type="number"  placeholder="persona.documento">
+                                                <mat-label>Documento</mat-label>
+                            <input matInput [(ngModel)]="newPersona.documento" name="documento" type="number">
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]=newPersona.telefono name="telefono" type="number" placeholder="{{data.telefono}}">
+                        <mat-label>Telefono</mat-label>
+                            <input matInput [(ngModel)]=newPersona.telefono name="telefono" type="number" >
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]=newPersona.fechaNacimiento name="fechaNacimiento" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input matInput [(ngModel)]=newPersona.fechaNacimiento name="fechaNacimiento" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" >
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker touchUi="true" #picker></mat-datepicker>
                         </mat-form-field>
@@ -34,6 +38,7 @@
                     <td colspan="2" class="content-center">
                       <div class="example-button-container">
                         <button mat-flat-button color="primary">Enviar</button>
+                        
                         </div>
                     </td>
                 </tr>

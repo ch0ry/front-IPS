@@ -1,5 +1,5 @@
 export class Medicamento {
-  id?: number;
+  id: number;
   nombre: string;
   concentracion: string;
   descripcion: string;

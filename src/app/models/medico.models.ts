@@ -1,6 +1,6 @@
 
 export class Medico {
-  id?: number;
+  id: number;
   idPersona: number;
   especialidad: string;
 }

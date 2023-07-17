@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PacientesService {
-  private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
+  private Api_url = "/api/paciente";
 
   constructor(private http: HttpClient) { }
 
   getPacientes(): Observable <Paciente[]> {
-    return this.http.get<Paciente[]>(this.Api_url);
+    const url = `${this.Api_url}/getAllPaciente`;
+    return this.http.get<Paciente[]>(url);
   }
 
   getPacientesPorId(id: number): Observable<Paciente[]>{
@@ -31,7 +32,7 @@ export class PacientesService {
   }
   eliminarPaciente(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
-    return this.http.delete<void>(this.Api_url);
+    return this.http.delete<void>(url);
   }
 
 

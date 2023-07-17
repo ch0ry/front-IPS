@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PacientesService } from './services/pacientes.service';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,10 @@ import { PacientesService } from './services/pacientes.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+  constructor(public router: Router) {
+  }
+
   events: string[] = [];
   opened: boolean;
   title = 'Landing';

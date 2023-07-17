@@ -13,6 +13,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { PersonasService} from "../../services/personas.service";
 import { Router } from '@angular/router';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
+import {MedicosService} from "../../services/medicos.service";
+import {PacientesService} from "../../services/pacientes.service";
 
 @Component({
   selector: 'app-personas',
@@ -21,7 +23,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dia
 })
 export class PersonasComponent implements OnInit{
 
-  constructor(private service: PersonasService, private router: Router, public dialog: MatDialog) {
+  constructor(private service: PersonasService, private medicoService: MedicosService, private pacienteService: PacientesService, private router: Router, public dialog: MatDialog) {
     // Set the minimum to January 1st 20 years in the past and December 31st a year in the future.
     const currentYear = new Date().getFullYear();
     this.minDateP = new Date(currentYear - 100, 0, 1);
@@ -32,7 +34,6 @@ export class PersonasComponent implements OnInit{
 
     this.maxDateM = new Date(currentYear - 18, 0, 1);
     this.minDateM = new Date(currentYear - 100, 0, 1);
-
   }
 
   openDialog(persona: Persona) {
@@ -45,14 +46,43 @@ export class PersonasComponent implements OnInit{
     this.getPersonas();
   }
 
+
   private getPersonas() {
     this.service.getPersonas().subscribe((data) => {
       this.personas = data;
     });
   }
 
+  public createPersona() {
+    this.persona.fechaDesde = new Date();
+    this.persona.fechaHasta = new Date();
+    this.service.createPersona(this.persona).subscribe((data) => {
+      this.getPersonas();
+      this.persona = data;
+      this.personaId = this.persona.id;
+        if (this.role == 1){
+          this.medico.idPersona = this.personaId;
+          this.medicoService.crearMedico(this.medico).subscribe();
+        }
+        else{
+          this.paciente.idPersona = this.personaId;
+          this.pacienteService.crearPaciente(this.paciente).subscribe();
+        }
+      alert("¡Se creó con éxito la persona!");
+    });
+  }
+
   persona: Persona = new Persona();
+  personaId: number;
   personas: Persona[];
+
+
+  paciente: Paciente = new Paciente();
+  pacientes: Paciente[];
+
+  medico: Medico = new Medico();
+  medicos: Medico[];
+
   columns: string[] = ['id', 'nombre', 'documento', 'fechaNac', 'edit'];
 
   minDateP: Date;
@@ -74,13 +104,29 @@ export class PersonasComponent implements OnInit{
     }
   }
 
-  submit(){
-    console.log(this.persona.nombre);
-    console.log(this.persona.documento);
-    console.log(this.persona.telefono);
-    console.log(this.persona.fechaNacimiento);
-    console.log(this.role);
+  public deletePersona(personaId: number) {
+    this.medicoService.getMedicos().subscribe((data) => {
+      for (let med of data) {
+        if (med.idPersona == personaId) {
+          console.log(med.idPersona);
+          this.medicoService.eliminarMedico(personaId).subscribe();
+          break;
+        }
+      }
 
+    });
+
+    this.pacienteService.getPacientes().subscribe((data) => {
+      for (let pac of data) {
+        if (pac.idPersona == personaId) {
+          console.log(pac.idPersona);
+          this.pacienteService.eliminarPaciente(personaId).subscribe();
+          break;
+        }
+      }
+    });
+
+    this.service.deletePersona(personaId).subscribe();
   }
 
   role: number;
@@ -109,24 +155,24 @@ export class EditDialog {
   minDate: Date;
   maxDate: Date;
 
-  persona: Persona;
-
-  newPersona: Persona;
+  newPersona: Persona = new Persona();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Persona, private service: PersonasService,) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 100, 0, 1);
     this.maxDate = new Date();
 
-    this.persona = data;
+   this.newPersona = Object.assign({}, data);
 
   }
 
   edit(persona: Persona) {
     this.service.updatePersona(persona)
     .subscribe(data=>{
-      this.persona=data;
-      alert("Se Actualizo con Exito...!!!");
+      alert("¡Se actualizó con exito!");
     });
   }
+
+
+
 }
