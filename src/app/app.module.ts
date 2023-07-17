@@ -16,12 +16,24 @@ import { HttpClientModule } from '@angular/common/http';
 //services
 import { PacientesService } from './services/pacientes.service';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import { SedesComponent } from './components/sedes/sedes.component';
+import { TerapiasComponent } from './components/terapias/terapias.component';
+import { TratamientosComponent } from './components/tratamientos/tratamientos.component';
+import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
+import { ConsultasComponent } from './components/consultas/consultas.component';
+import { AgendaComponent } from './components/agenda/agenda.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SedesComponent,
+    TerapiasComponent,
+    TratamientosComponent,
+    MedicamentosComponent,
+    ConsultasComponent,
+    AgendaComponent
   ],
   imports: [
     BrowserModule,
