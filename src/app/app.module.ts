@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PersonasComponent } from './components/personas/personas.component';
 import { HttpClientModule } from '@angular/common/http';
 //services
@@ -22,18 +22,25 @@ import { TratamientosComponent } from './components/tratamientos/tratamientos.co
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { ConsultasComponent } from './components/consultas/consultas.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
-
+import {NgIf} from "@angular/common";
+import {MatInputModule} from "@angular/material/input";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatOptionModule } from "@angular/material/core";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SedesComponent,
-    TerapiasComponent,
-    TratamientosComponent,
-    MedicamentosComponent,
-    ConsultasComponent,
-    AgendaComponent
+    PersonasComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +54,30 @@ import { AgendaComponent } from './components/agenda/agenda.component';
     MatCheckboxModule,
     FormsModule,
     HttpClientModule,
-    PersonasComponent,
-    MatDialogModule
+    MatDialogModule,
+    SedesComponent,
+    TerapiasComponent,
+    TratamientosComponent,
+    MedicamentosComponent,
+    ConsultasComponent,
+    AgendaComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     PacientesService

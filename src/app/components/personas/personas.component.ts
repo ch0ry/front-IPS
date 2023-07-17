@@ -3,48 +3,21 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule, NgModel} from
 import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatCardModule } from "@angular/material/card";
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
-import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
-import {MatSelectModule} from "@angular/material/select";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+
+import { MatRadioModule} from "@angular/material/radio";
 import { Persona } from "../../models/persona.models";
 import { Paciente } from "../../models/paciente.models";
 import { Medico } from "../../models/medico.models";
 import {MatButtonModule} from "@angular/material/button";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatTableModule} from "@angular/material/table";
 import { PersonasService} from "../../services/personas.service";
 import { Router } from '@angular/router';
-import {MatIconModule} from "@angular/material/icon";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
-  styleUrls: ['./personas.component.scss'],
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgIf,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatGridListModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatTableModule,
-    MatIconModule
-  ]
+  styleUrls: ['./personas.component.scss']
 })
 export class PersonasComponent implements OnInit{
 
@@ -138,15 +111,22 @@ export class EditDialog {
 
   persona: Persona;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Persona) {
+  newPersona: Persona;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Persona, private service: PersonasService,) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 100, 0, 1);
     this.maxDate = new Date();
 
     this.persona = data;
+
   }
 
-  edit() {
-    console.log("asda");
+  edit(persona: Persona) {
+    this.service.updatePersona(persona)
+    .subscribe(data=>{
+      this.persona=data;
+      alert("Se Actualizo con Exito...!!!");
+    });
   }
 }

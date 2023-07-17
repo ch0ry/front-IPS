@@ -1,30 +1,30 @@
 <h1 mat-dialog-title>Editar Persona</h1>
 <div mat-dialog-content>
-  <form style="display: flex; justify-content: center" (ngSubmit)="edit()">
+  <form style="display: flex; justify-content: center" (ngSubmit)="edit(newPersona)">
             <table>
                 <tr>
                     <td>
                         <mat-form-field class="demo-full-width">
-                            <input [(ngModel)]=persona.nombre name="nombre" matInput placeholder="Nombre Completo">
+                            <input [(ngModel)]=newPersona.nombre name="nombre" matInput placeholder="persona.nombre">
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]="persona.documento" name="documento" type="number"  placeholder="Documento">
+                            <input matInput [(ngModel)]="newPersona.documento" name="documento" type="number"  placeholder="persona.documento">
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]=persona.telefono name="telefono" type="number" placeholder="Teléfono">
+                            <input matInput [(ngModel)]=newPersona.telefono name="telefono" type="number" placeholder="{{data.telefono}}">
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <mat-form-field class="demo-full-width">
-                            <input matInput [(ngModel)]=persona.fechaNacimiento name="fechaNacimiento" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
+                            <input matInput [(ngModel)]=newPersona.fechaNacimiento name="fechaNacimiento" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker touchUi="true" #picker></mat-datepicker>
                         </mat-form-field>

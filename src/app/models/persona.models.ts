@@ -4,6 +4,6 @@ export class Persona {
   nombre: string;
   telefono: string;
   fechaNacimiento: Date;
-  fechaDesde: Date;
-  fechaHasta: Date;
+  fechaDesde?: Date;
+  fechaHasta?: Date;
 }
