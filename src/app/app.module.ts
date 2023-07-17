@@ -15,6 +15,7 @@ import { PersonasComponent } from './components/personas/personas.component';
 import { HttpClientModule } from '@angular/common/http';
 //services
 import { PacientesService } from './services/pacientes.service';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -34,7 +35,8 @@ import { PacientesService } from './services/pacientes.service';
     MatCheckboxModule,
     FormsModule,
     HttpClientModule,
-    PersonasComponent
+    PersonasComponent,
+    MatDialogModule
   ],
   providers: [
     PacientesService

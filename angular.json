@@ -64,6 +64,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json",
+            "browserTarget": "front-IPS:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "front-IPS:build:production"
