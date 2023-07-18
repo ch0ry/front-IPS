@@ -5,6 +5,4 @@ export class Tratamiento {
   idTerapia: number;
   dosisMedicamento: string;
   cantidadTerapias: string;
-  medicamento: number;
-  terapia: number;
 }

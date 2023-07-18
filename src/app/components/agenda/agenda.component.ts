@@ -18,6 +18,8 @@ import {PacientesService} from "../../services/pacientes.service";
 import {Paciente, PacienteGet} from "../../models/paciente.models";
 import {SedesService} from "../../services/sedes.service";
 import { Sede } from 'src/app/models/sede.models';
+import { Tratamiento } from 'src/app/models/tratamiento.models';
+import { TratamientosService } from '../../services/tratamientos.service';
 
 
 
@@ -37,6 +39,9 @@ export class AgendaComponent implements OnInit{
 
   citas: Cita[] = [];
 
+  sedes: Sede[];
+  sedeId: number;
+
   /*
   Se guardan los ids de las citas para hacer la relacion con las consultas
   Es como si quisiera hacer
@@ -51,6 +56,11 @@ export class AgendaComponent implements OnInit{
   */
   medico: MedicoGet;
   medicos: MedicoGet[];
+
+  pacientes: PacienteGet[];
+  // @ts-ignore
+  pacienteId: number = null;
+
   /*
   Lo mismo para las consultas, toca llamar todas las consultas, y como el back es precario
   o sea, no hay forma de traerme solo las consultas que esten ocupadas por el medico seleccionado
@@ -58,12 +68,27 @@ export class AgendaComponent implements OnInit{
   */
   consultas: Consulta[];
 
+  currentYear: Date;
+  maxYear: Date;
 
-  constructor(private service: AgendaService, private medicoService: MedicosService, private consultaService: ConsultasService, private router: Router, public dialog: MatDialog) {}
+  constructor(private service: AgendaService, private sedeService: SedesService, private pacienteService: PacientesService, private medicoService: MedicosService, private consultaService: ConsultasService, private router: Router, public dialog: MatDialog) {
+     const now = new Date().getFullYear();
+
+     this.currentYear = new Date();
+     this.maxYear = new Date(now + 1, 0, 0);
+  }
 
   ngOnInit() {
 
     this.getAllMedicos();
+
+    this.pacienteService.getPacientes().subscribe((data) => {
+      this.pacientes = data;
+    });
+
+    this.sedeService.getSedes().subscribe((data) => {
+      this.sedes = data;
+    });
 
   }
 
@@ -104,10 +129,35 @@ export class AgendaComponent implements OnInit{
   }
 
  public createCita(){
-    this.service.crearAgenda(this.agenda).subscribe((data) => {
-      alert("!Agenda creada con éxito!");
-    });
-  }
+
+    let consulta: Consulta = new Consulta();
+    consulta.idSede = this.sedeId;
+   consulta.idPaciente = this.pacienteId;
+   consulta.idMedico = this.medico.id;
+   consulta.fecha = this.agenda.dia;
+   // @ts-ignore
+   consulta.diagnostico = "";
+   // @ts-ignore
+   consulta.idTratamiento = null;
+   // @ts-ignore
+   consulta.id = null;
+   consulta.sintomas = "";
+
+   this.consultaService.crearConsulta(consulta).subscribe((res) => {
+
+     let agenda: Agenda = new Agenda();
+     agenda.idConsulta = res.id;
+     //@ts-ignore
+     agenda.id = null;
+     agenda.dia = this.agenda.dia;
+     agenda.horaInicio = this.agenda.horaInicio;
+     agenda.horaFin = this.agenda.horaFin;
+     agenda.idMedico = this.medico.id;
+     this.service.crearAgenda(agenda).subscribe((data) => {
+       alert("!Agenda creada con éxito!");
+     });
+   });
+    }
 
   public deleteCita(id: number){
 
@@ -131,7 +181,7 @@ export class AgendaComponent implements OnInit{
     });
   }
 
-  openDialogShowConsulta(consulta: Consulta) {
+  openDialogShowConsulta(consulta: ConsultaGet) {
     this.dialog.open(EditDialogShowConsulta, {
       data : consulta
     });
@@ -239,10 +289,16 @@ export class EditDialogShowConsulta {
 
     consulta: ConsultaGet;
 
+    tratamientos: Tratamiento[] = [];
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: ConsultaGet) {
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: ConsultaGet, private consultaService: ConsultasService, private tratamientoService: TratamientosService) {
 
       this.consulta = data;
+
+    }
+
+  editarConsulta(){
 
     }
   }
