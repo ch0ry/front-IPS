@@ -36,6 +36,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatOptionModule } from "@angular/material/core";
 import {MatListModule} from "@angular/material/list";
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {MatListModule} from "@angular/material/list";
     AgendaComponent,
     EditDialogPersona,
     EditDialogAgenda,
-    EditDialogShowConsulta
+    EditDialogShowConsulta,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,52 @@
+<div fxLayout="column" class="container">
+    <mat-card fxFlex="1 1 100%">
+      <mat-tab-group class="tab-group">
+        <mat-tab label="Start">
+          <h2>Welcome to our IPS!</h2>
+          <p>This is the start section of our IPS website.</p>
+
+          <img src="/assets/IPS (2).png" alt="Image description" class="tab-image">
+
+        </mat-tab>
+        <mat-tab label="News">
+            <h2>Latest News</h2>
+            <div class="news-container">
+              <mat-card class="news-card" *ngFor="let newsItem of newsItems">
+                <img src="{{ newsItem.image }}" alt="{{ newsItem.title }}" class="card-image">
+                <div class="card-content">
+                  <h3 class="card-title">{{ newsItem.title }}</h3>
+                  <p class="card-description">{{ newsItem.description }}</p>
+                </div>
+              </mat-card>
+            </div>
+          </mat-tab>
+          
+        <mat-tab label="Vision">
+            <h2>Our Vision</h2>
+            <p>Our vision is to become the leading healthcare provider, delivering exceptional medical services to our community.</p>
+            <blockquote>
+              "To provide comprehensive and compassionate care, focusing on patient well-being and delivering outstanding healthcare services."
+            </blockquote>
+            <img src="/assets/3.png" alt="Image description" class="tab-image">
+        </mat-tab>
+        <mat-tab label="Mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to improve the health and well-being of our patients by:</p>
+            <ol>
+              <li>Providing personalized and patient-centered care.</li>
+              <li>Offering a wide range of medical services with the latest advancements and technology.</li>
+              <li>Promoting preventive healthcare practices in the community.</li>
+              <li>Collaborating with healthcare professionals to deliver comprehensive treatment.</li>
+              <li>Ensuring an exceptional patient experience through a caring and compassionate approach.</li>
+            </ol>
+        </mat-tab>
+        <mat-tab label="Contact">
+            <h2>Contact Us</h2>
+            <p>For any inquiries or to schedule an appointment, please contact us using the information below:</p>
+            <p><strong>Address:</strong> 123 Main Street</p>
+            <p><strong>Phone:</strong> 123-456-7890</p>
+            <p><strong>Email:</strong> info@ips.com</p>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>

@@ -7,10 +7,12 @@ import {ConsultasComponent} from "./components/consultas/consultas.component";
 import {MedicamentosComponent} from "./components/medicamentos/medicamentos.component";
 import {TerapiasComponent} from "./components/terapias/terapias.component";
 import {SedesComponent} from "./components/sedes/sedes.component";
+import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   { path: 'personas', component: PersonasComponent},
-  //{ path: '', component HomeComponent},
+  { path: '', component: HomeComponent},
+  { path : 'home', component: HomeComponent},
   { path: 'agenda', component: AgendaComponent},
   { path: 'tratamientos', component: TratamientosComponent},
   { path: 'consultas', component: ConsultasComponent},

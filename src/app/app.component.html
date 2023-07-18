@@ -2,6 +2,7 @@
 
   <mat-drawer class="side-drawer" #drawer mode="side" [(opened)]="opened" (opened)="events.push('open!')">
     <div class="drawer-div">
+    <button mat-button class="drawer-button" (click)="this.router.navigate(['home'])">Home</button>
     <button mat-button class="drawer-button" (click)="this.router.navigate(['personas'])">Personas</button>
     <button mat-button class="drawer-button" (click)="this.router.navigate(['agenda'])">Agenda</button>
     <button mat-button class="drawer-button" (click)="this.router.navigate(['medicamentos'])">Medicamentos</button>

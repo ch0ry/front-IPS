@@ -42,8 +42,9 @@ export class SedesComponent {
 
 
   submit(){
-    console.log(this.sede.nombre);
-    console.log(this.sede.direccion);
+    this.service.crearSede(this.sede).subscribe(() => {
+      alert("¡Sede creada con éxito!");
+    });
   }
 
 
