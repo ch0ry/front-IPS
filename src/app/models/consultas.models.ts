@@ -1,7 +1,3 @@
-import { Sede } from 'src/app/models/sede.models';
-import { Paciente } from 'src/app/models/paciente.models';
-import { Medico } from 'src/app/models/medico.models';
-import { Tratamiento } from 'src/app/models/tratamiento.models';
 
 export class Consulta {
   id: number;
@@ -12,8 +8,12 @@ export class Consulta {
   fecha: Date;
   sintomas: string;
   diagnostico: string;
-  sede: Sede;
-  paciente: Paciente;
-  medico: Medico;
-  tratamiento: Tratamiento;
+  paciente: number;
+  medico: number;
+}
+
+export class ConsultaGet extends Consulta{
+  nombreSede: string;
+  nombreMedico: string;
+  nombrePaciente: string;
 }

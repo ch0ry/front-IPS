@@ -1,0 +1,84 @@
+.form-card {
+  width: 70%;
+  height: fit-content;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.form-header {
+  align-self: center;
+  justify-self: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.form-div {
+  display: flex;
+  padding-top: 3rem;
+  align-content: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.mat-card {
+  text-align: -webkit-center;
+}
+
+.demo-toolbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.demo-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.demo-full-width {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
+.content-center {
+  text-align: -webkit-center;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+}

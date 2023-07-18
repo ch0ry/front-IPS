@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Sedes } from 'src/app/models/sede.models.ts';
+import { Sede } from 'src/app/models/sede.models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SedesService {
-  private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
+  private Api_url = "/api/sedes";
 
   constructor(private http: HttpClient) { }
 
   getSedes(): Observable <Sede[]> {
-    return this.http.get<Sede[]>(this.Api_url);
+    const url = `${this.Api_url}/getAllSede`;
+    return this.http.get<Sede[]>(url);
   }
 
   getSedesPorId(id: number): Observable<Sede[]>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Sede[]>(this.Api_url);
+    return this.http.get<Sede[]>(url);
   }
 
   crearSede(sede: Sede): Observable<Sede> {
-    return this.http.post<Sede[]>(this.Api_url, sede);
+    return this.http.post<Sede>(this.Api_url, sede);
   }
 
   actualizarPaciente(sede: Sede): Observable<Sede> {
     const url = `${this.Api_url}/${sede.id}`;
-    return this.http.put<Sede>(this.Api_url, sede);
+    return this.http.put<Sede>(url, sede);
   }
   eliminarSede(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
-    return this.http.delete<void>(this.Api_url);
+    return this.http.delete<void>(url);
   }
 
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Consulta } from 'src/app/models/consulta.models.ts';
+import { Consulta } from 'src/app/models/consultas.models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsultasService {
-  private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
+  private Api_url = "/api/consulta";
 
   constructor(private http: HttpClient) { }
 
@@ -14,9 +15,9 @@ export class ConsultasService {
     return this.http.get<Consulta[]>(this.Api_url);
   }
 
-  getConsultasPorId(id: number): Observable<Consulta[]>{
+  getConsultaPorId(id: number): Observable<Consulta>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Consulta[]>(this.Api_url);
+    return this.http.get<Consulta>(url);
   }
 
   crearConsulta(consulta: Consulta): Observable<Consulta> {

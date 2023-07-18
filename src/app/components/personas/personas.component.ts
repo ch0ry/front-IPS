@@ -1,15 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule, NgModel} from '@angular/forms';
-import {NgIf} from '@angular/common';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from "@angular/material/datepicker";
 
-import { MatRadioModule} from "@angular/material/radio";
 import { Persona } from "../../models/persona.models";
 import { Paciente } from "../../models/paciente.models";
 import { Medico } from "../../models/medico.models";
-import {MatButtonModule} from "@angular/material/button";
+
 import { PersonasService} from "../../services/personas.service";
 import { Router } from '@angular/router';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
@@ -37,7 +31,7 @@ export class PersonasComponent implements OnInit{
   }
 
   openDialog(persona: Persona) {
-    this.dialog.open(EditDialog, {
+    this.dialog.open(EditDialogPersona, {
       data : persona
     });
   }
@@ -78,10 +72,8 @@ export class PersonasComponent implements OnInit{
 
 
   paciente: Paciente = new Paciente();
-  pacientes: Paciente[];
 
   medico: Medico = new Medico();
-  medicos: Medico[];
 
   columns: string[] = ['id', 'nombre', 'documento', 'fechaNac', 'edit'];
 
@@ -109,7 +101,7 @@ export class PersonasComponent implements OnInit{
       for (let med of data) {
         if (med.idPersona == personaId) {
           console.log(med.idPersona);
-          this.medicoService.eliminarMedico(personaId).subscribe();
+          this.medicoService.eliminarMedico(personaId).subscribe(                                                                                                                                                                                                                                                                                                                      );
           break;
         }
       }
@@ -139,18 +131,9 @@ export class PersonasComponent implements OnInit{
   selector: 'edit-dialog',
   templateUrl: 'edit-dialog.html',
   styleUrls: ['./personas.component.scss'],
-  standalone: true,
-  imports: [MatDialogModule,
-            NgIf,
-            MatDatepickerModule,
-            MatFormFieldModule,
-            MatRadioModule,
-            MatInputModule,
-            FormsModule,
-            MatButtonModule
-            ],
+
 })
-export class EditDialog {
+export class EditDialogPersona {
 
   minDate: Date;
   maxDate: Date;

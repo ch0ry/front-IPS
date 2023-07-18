@@ -1,1 +1,134 @@
-<p>agenda works!</p>
+<mat-tab-group>
+
+<mat-tab label="Editar">
+    <mat-card class="form-card">
+    	<mat-card-title class="form-header">Listar Citas</mat-card-title>
+    	<mat-card-content style="height: fit-content;">
+
+        <mat-form-field>
+          <mat-label>Medicos</mat-label>
+          <mat-select [(ngModel)]="medico" (selectionChange)="getAllCitas()">
+            <mat-option *ngFor="let med of medicos" [value]="med">
+              {{med.nombrePersona}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <table mat-table #table [dataSource]="citas">
+
+          <ng-container matColumnDef="dia">
+            <th mat-header-cell *matHeaderCellDef> Dia </th>
+            <td mat-cell *matCellDef="let element"> {{element.agenda.dia}} </td>
+          </ng-container>
+
+            <ng-container matColumnDef="horaInicio">
+              <th mat-header-cell *matHeaderCellDef>Hora de inicio </th>
+            <td mat-cell *matCellDef="let element"> {{element.agenda.horaInicio}} </td>
+          </ng-container>
+
+         <ng-container matColumnDef="horaFin">
+              <th mat-header-cell *matHeaderCellDef>Hora de fin </th>
+            <td mat-cell *matCellDef="let element"> {{element.agenda.horaFin}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="consulta">
+              <th mat-header-cell *matHeaderCellDef> Consulta </th>
+            <td mat-cell *matCellDef="let element">
+              <div [hidden]="element.consulta == null">
+                <button mat-icon-button (click)="openDialogShowConsulta(element.consulta)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="openDialog(element.agenda, element.medico)">
+            <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="deleteCita(element.id)">
+            	<mat-icon>delete_outline</mat-icon>
+            </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+
+      </mat-card-content>
+    </mat-card>
+
+
+  </mat-tab>
+
+	<mat-tab label="Agregar">
+      <div class="form-div">
+ <mat-card class="form-card">
+  <mat-card-title class="form-header">Agregar Cita</mat-card-title>
+  <mat-card-content style="height: 100%;">
+    <form style="display: flex; justify-content: center" (ngSubmit)="createCita()">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input [(ngModel)]=agenda.horaInicio name="horaInicio" type="time" matInput placeholder="Hora Inicio">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [(ngModel)]="agenda.horaFin" name="horaFin" type="time"  placeholder="Hora Fin">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [(ngModel)]="agenda.dia" name="dia" type="Date"  placeholder="Dia">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <mat-form-field class="demo-full-width">
+                        <mat-label>Medicos</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let med of medicos" [value]="med">
+                            {{med.nombrePersona}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                        <mat-label>Medicos</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let med of medicos" [value]="med">
+                            {{med.nombrePersona}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                      <div class="example-button-container">
+                        <button mat-flat-button color="primary">Enviar</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+  </mat-card-content>
+  </mat-card>
+</div>
+  </mat-tab>
+
+</mat-tab-group>
+

@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Ver Consulta</h1>
+<div mat-dialog-content>
+  <div style="display: flex; justify-content: center">
+  <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.nombreSede}}</span>
+        <span matListItemLine>Sede</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.nombrePaciente}}</span>
+        <span>Paciente</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.nombreMedico}}</span>
+       <span>Médico</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.idTratamiento}}</span>
+       <span>ID Tratamiento</span>
+      </mat-list-item>
+      
+    </mat-list>
+    
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.fecha}}</span>
+        <span matListItemLine>Fecha</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.sintomas}}</span>
+        <span>Síntomas</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{consulta.diagnostico}}</span>
+        <span>Diagnóstico</span>
+      </mat-list-item>
+    </mat-list>
+    
+     
+        </div>
+
+</div>

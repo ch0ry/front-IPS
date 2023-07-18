@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Medico } from 'src/app/models/medico.models';
 import { Observable } from 'rxjs';
+import { MedicoGet } from "../models/medicoGet.models";
 
 
 @Injectable({
@@ -12,14 +13,14 @@ export class MedicosService {
 
   constructor(private http: HttpClient) { }
 
-  getMedicos(): Observable <Medico[]> {
+  getMedicos(): Observable <MedicoGet[]> {
     const url = `${this.Api_url}/getAllMedico`;
-    return this.http.get<Medico[]>(url);
+    return this.http.get<MedicoGet[]>(url);
   }
 
-  getMedicosPorId(id: number): Observable<Medico[]>{
+  getMedicoPorId(id: number): Observable<MedicoGet>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Medico[]>(this.Api_url);
+    return this.http.get<MedicoGet>(url);
   }
 
   crearMedico(medico: Medico): Observable<Medico> {

@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { PersonasComponent } from './components/personas/personas.component';
+import {EditDialogPersona, PersonasComponent} from './components/personas/personas.component';
 import { HttpClientModule } from '@angular/common/http';
 //services
 import { PacientesService } from './services/pacientes.service';
@@ -21,7 +21,7 @@ import { TerapiasComponent } from './components/terapias/terapias.component';
 import { TratamientosComponent } from './components/tratamientos/tratamientos.component';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { ConsultasComponent } from './components/consultas/consultas.component';
-import { AgendaComponent } from './components/agenda/agenda.component';
+import {AgendaComponent, EditDialogAgenda, EditDialogShowConsulta} from './components/agenda/agenda.component';
 import {NgIf} from "@angular/common";
 import {MatInputModule} from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,12 +35,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatOptionModule } from "@angular/material/core";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonasComponent
+    PersonasComponent,
+    SedesComponent,
+    TerapiasComponent,
+    TratamientosComponent,
+    MedicamentosComponent,
+    ConsultasComponent,
+    AgendaComponent,
+    EditDialogPersona,
+    EditDialogAgenda,
+    EditDialogShowConsulta
+
   ],
   imports: [
     BrowserModule,
@@ -55,12 +66,6 @@ import { MatOptionModule } from "@angular/material/core";
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    SedesComponent,
-    TerapiasComponent,
-    TratamientosComponent,
-    MedicamentosComponent,
-    ConsultasComponent,
-    AgendaComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
@@ -77,7 +82,9 @@ import { MatOptionModule } from "@angular/material/core";
     MatButtonModule,
     MatTabsModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatDatepickerModule
   ],
   providers: [
     PacientesService

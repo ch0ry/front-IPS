@@ -1,5 +1,3 @@
-import { Medicamento } from 'src/app/models/medicamento.models';
-import { Terapia } from 'src/app/models/terapia.models';
 
 export class Tratamiento {
   id: number;
@@ -7,6 +5,6 @@ export class Tratamiento {
   idTerapia: number;
   dosisMedicamento: string;
   cantidadTerapias: string;
-  medicamento: Medicamento;
-  terapia: Terapia;
+  medicamento: number;
+  terapia: number;
 }

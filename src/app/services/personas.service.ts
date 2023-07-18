@@ -16,9 +16,9 @@ export class PersonasService {
        return this.http.get<Persona[]>(url);
      }
 
-  getPersonasPorId(id: number): Observable<Persona[]>{
+  getPersonaPorId(id: number): Observable<Persona>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Persona[]>(url);
+    return this.http.get<Persona>(url);
     }
 
   createPersona(persona: Persona): Observable<Persona> {

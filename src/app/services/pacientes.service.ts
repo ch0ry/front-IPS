@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Paciente } from 'src/app/models/paciente.models';
+import {Paciente, PacienteGet} from 'src/app/models/paciente.models';
 import { Observable } from 'rxjs';
 
 
@@ -12,14 +12,14 @@ export class PacientesService {
 
   constructor(private http: HttpClient) { }
 
-  getPacientes(): Observable <Paciente[]> {
+  getPacientes(): Observable <PacienteGet[]> {
     const url = `${this.Api_url}/getAllPaciente`;
-    return this.http.get<Paciente[]>(url);
+    return this.http.get<PacienteGet[]>(url);
   }
 
-  getPacientesPorId(id: number): Observable<Paciente[]>{
+  getPacientePorId(id: number): Observable<Paciente>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Paciente[]>(this.Api_url);
+    return this.http.get<Paciente>(url);
   }
 
   crearPaciente(paciente: Paciente): Observable<Paciente> {
@@ -28,7 +28,7 @@ export class PacientesService {
 
   actualizarPaciente(paciente: Paciente): Observable<Paciente> {
     const url = `${this.Api_url}/${paciente.id}`;
-    return this.http.put<Paciente>(this.Api_url, paciente);
+    return this.http.put<Paciente>(url, paciente);
   }
   eliminarPaciente(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
