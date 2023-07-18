@@ -51,7 +51,6 @@ import {MatListModule} from "@angular/material/list";
     EditDialogPersona,
     EditDialogAgenda,
     EditDialogShowConsulta
-
   ],
   imports: [
     BrowserModule,

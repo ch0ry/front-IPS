@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Medicamento } from 'src/app/models/medicamento.models.ts'
+import { Medicamento } from 'src/app/models/medicamento.models'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicamentosService {
-  private Api_url = "https://real-hasta-la-muerte.up.railway.app/rhlm/api/persona/getAll";
+  private Api_url = "/api/medicamento/getAllMedicamento";
 
   constructor(private http: HttpClient) { }
 

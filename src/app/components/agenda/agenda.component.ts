@@ -104,7 +104,9 @@ export class AgendaComponent implements OnInit{
   }
 
  public createCita(){
-
+    this.service.crearAgenda(this.agenda).subscribe((data) => {
+      alert("!Agenda creada con éxito!");
+    });
   }
 
   public deleteCita(id: number){
@@ -170,23 +172,32 @@ export class EditDialogAgenda {
 
   public createConsulta(){
     let consulta: Consulta = new Consulta();
-    consulta.idSede = this.sede.id;
+    //consulta.idSede = this.sede.id;
+    consulta.idSede = 1;
     consulta.idPaciente = this.paciente.id;
     consulta.idMedico = this.medico.id;
     consulta.fecha = this.agenda.dia;
+    // @ts-ignore
+    consulta.diagnostico = "";
+    // @ts-ignore
+    consulta.idTratamiento = 1;
+    // @ts-ignore
+    consulta.id = null;
+    consulta.sintomas = "";
 
-    this.serviceConsultas.crearConsulta(consulta).subscribe(() => {
-      this.serviceConsultas.getConsultas().subscribe((data) =>
-      {
-        for (let con of data) {
-          if (con.fecha == consulta.fecha){
-            console.log("wip");
-          }
-        }
-      })
+    this.serviceConsultas.crearConsulta(consulta).subscribe((res) => {
+
+      let agenda: Agenda = new Agenda();
+      agenda.idConsulta = res.id;
+      agenda.id = this.agenda.id;
+      agenda.dia = this.agenda.dia;
+      agenda.horaInicio = this.agenda.horaInicio;
+      agenda.horaFin = this.agenda.horaFin;
+      agenda.idMedico = this.agenda.idMedico;
+            this.edit(agenda);
     });
 
-    this
+
 
   }
   edit(agenda: Agenda) {

@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Editar Medicamento<h1>
+<div mat-dialog-content>
+  <form style="display: flex; justify-content: center" (ngSubmit)="edit(newMedicamento)">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input [(ngModel)]=newMedicamento.nombre name="nombre" matInput placeholder=medicamento.nombre>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [(ngModel)]=newMedicamento.concentracion name="concentracion" matInput placeholder=medicamento.concentracion>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [(ngModel)]=newMedicamento.descripcion name="descripcion"  matInput placeholder=medicamento.descripcion>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                      <div class="example-button-container">
+                        <button mat-flat-button color="primary">Enviar</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+</div>

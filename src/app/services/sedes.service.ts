@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SedesService {
-  private Api_url = "/api/sedes";
+  private Api_url = "/api/sede";
 
   constructor(private http: HttpClient) { }
 
@@ -16,22 +16,22 @@ export class SedesService {
     return this.http.get<Sede[]>(url);
   }
 
-  getSedesPorId(id: number): Observable<Sede[]>{
+  getSedesPorId(id: number): Observable<Sede>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Sede[]>(url);
+    return this.http.get<Sede>(url);
   }
 
   crearSede(sede: Sede): Observable<Sede> {
     return this.http.post<Sede>(this.Api_url, sede);
   }
 
-  actualizarPaciente(sede: Sede): Observable<Sede> {
-    const url = `${this.Api_url}/${sede.id}`;
-    return this.http.put<Sede>(url, sede);
+  actualizarSedes(sede: Sede): Observable<Sede> {
+
+    return this.http.put<Sede>(this.Api_url, sede);
   }
   eliminarSede(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(this.Api_url);
   }
 
 }

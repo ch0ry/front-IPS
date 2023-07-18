@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Editar Sede</h1>
+<div mat-dialog-content>
+  <form style="display: flex; justify-content: center" (ngSubmit)="edit(newSede)">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input [(ngModel)]=newSede.nombre name="nombre" matInput placeholder=sede.nombre>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <input matInput [(ngModel)]=newSede.direccion name="direccion" matInput placeholder=sede.direccion>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                      <div class="example-button-container">
+                        <button mat-flat-button color="primary">Enviar</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+</div>

@@ -26,8 +26,7 @@ export class AgendaService {
   }
 
   actualizarAgenda(agenda: Agenda): Observable<Agenda> {
-    const url = `${this.Api_url}/${agenda.id}`;
-    return this.http.put<Agenda>(url, agenda);
+    return this.http.put<Agenda>(this.Api_url, agenda);
   }
   eliminarAgenda(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
