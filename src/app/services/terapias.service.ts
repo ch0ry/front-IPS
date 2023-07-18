@@ -8,17 +8,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TerapiasService {
-  private Api_url = "/api/terapia/getAllTerapia";
+  private Api_url = "/api/terapia";
 
   constructor(private http: HttpClient){ }
 
   getTerapias(): Observable <Terapia[]> {
-    return this.http.get<Terapia[]>(this.Api_url);
+    const url = `${this.Api_url}/getAllTerapia`;
+    return this.http.get<Terapia[]>(url);
   }
 
-  getTerapiasPorId(id: number): Observable<Terapia[]>{
+  getTerapiasPorId(id: number): Observable<Terapia>{
     const url = `${this.Api_url}/${id}`;
-    return this.http.get<Terapia[]>(this.Api_url);
+    return this.http.get<Terapia>(url);
   }
 
   crearTerapia(terapia: Terapia): Observable<Terapia> {
@@ -26,12 +27,11 @@ export class TerapiasService {
   }
 
   actualizarTerapia(terapia: Terapia): Observable<Terapia> {
-    const url = `${this.Api_url}/${terapia.id}`;
     return this.http.put<Terapia>(this.Api_url, terapia);
   }
   eliminarTerapia(id: number): Observable<void> {
     const url = `${this.Api_url}/${id}`;
-    return this.http.delete<void>(this.Api_url);
+    return this.http.delete<void>(url);
   }
 
 

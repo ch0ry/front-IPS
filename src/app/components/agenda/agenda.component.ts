@@ -20,6 +20,11 @@ import {SedesService} from "../../services/sedes.service";
 import { Sede } from 'src/app/models/sede.models';
 import { Tratamiento } from 'src/app/models/tratamiento.models';
 import { TratamientosService } from '../../services/tratamientos.service';
+import {MedicamentosService} from "../../services/medicamentos.service";
+import {TerapiasService} from "../../services/terapias.service";
+import {Medicamento} from "../../models/medicamento.models";
+import {Terapia} from "../../models/terapia.models";
+import {MatInput} from "@angular/material/input";
 
 
 
@@ -287,18 +292,74 @@ export class EditDialogShowConsulta {
 
   columns: string[] = ["idSede", "idPaciente", "idMedico", "idTratamiento", "fecha", "sintomas", "diagnostico"];
 
+  @ViewChild(MatInput) terapiaDesc!: MatInput;
+
+
+
     consulta: ConsultaGet;
 
-    tratamientos: Tratamiento[] = [];
+    tratamiento: Tratamiento = new Tratamiento();
+
+    medicamentos: Medicamento[];
+    medicamento: Medicamento = new Medicamento();
+
+    terapias: Terapia[];
+    terapia: Terapia = new Terapia();
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: ConsultaGet, private consultaService: ConsultasService, private tratamientoService: TratamientosService) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: ConsultaGet, private consultaService: ConsultasService, private tratamientoService: TratamientosService, private medicamentoService: MedicamentosService, private terapiaService: TerapiasService) {
 
       this.consulta = data;
 
+      this.medicamentoService.getMedicamentos().subscribe((data) => {
+        this.medicamentos = data;
+      });
+
+      this.terapiaService.getTerapias().subscribe((data) => {
+        this.terapias = data;
+      })
+
+      if (this.consulta.idTratamiento != null){
+        this.tratamientoService.getTratamientosPorId(this.consulta.idTratamiento).subscribe((data) => {
+          this.tratamiento = data;
+          if (this.tratamiento.idTerapia != null){
+
+            this.terapiaService.getTerapiasPorId(this.tratamiento.idTerapia).subscribe((data) => {
+              this.terapia = data;
+            });
+
+          }
+          else {
+
+            this.terapia = new Terapia();
+
+            if (this.tratamiento.idMedicamento != null){
+              this.medicamentoService.getMedicamentosPorId(this.tratamiento.idMedicamento).subscribe((data) => {
+                this.medicamento = data;
+              });
+            }
+            else {
+
+              this.medicamento = new Medicamento();
+            }
+
+          }
+
+        });
+      }
+
+
+    }
+
+  public terapiaChange(desc: string){
+      this.terapiaDesc.value = desc;
     }
 
   editarConsulta(){
+
+      this.consultaService.actualizarConsulta(this.consulta).subscribe((data) => {
+        alert("¡Consulta editada con éxito!");
+      })
 
     }
   }

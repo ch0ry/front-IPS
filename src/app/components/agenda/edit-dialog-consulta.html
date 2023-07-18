@@ -19,25 +19,13 @@
                     </td>
                     <td>
                         <mat-form-field class="demo-full-width">
-                             <mat-label>Medico</mat-label>
-                            <input [disabled]="true" [(ngModel)]=consulta.nombreMedico name="nombreMedico" matInput placeholder="Medico">
+                             <mat-label>Médico</mat-label>
+                            <input [disabled]="true" [(ngModel)]=consulta.nombreMedico name="nombreMedico" matInput placeholder="Médico">
                         </mat-form-field>
                     </td>
                 </tr>
 
-                  <tr [hidden]="true">
-                      <td colspan=2>
-                         <mat-form-field class="demo-full-width">
-                         <mat-label>Tratamiento</mat-label>
-                          <mat-select [(ngModel)]=consulta.idTratamiento name="idTratamiento">
-                            <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento.id">
-                              {{tratamiento.id}}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                      </td>
 
-                  </tr>
 
                   <tr>
                     <td colspan=2>
@@ -54,7 +42,7 @@
                 	<td colspan=2>
                     <mat-form-field class="demo-full-width">
                       <mat-label>Sintomas</mat-label>
-                      <textarea matInput [(ngModel)]=consulta.sintomas name="sintomas" placeholder="Describa los sintomas"></textarea>
+                      <textarea matInput [(ngModel)]=consulta.sintomas name="sintomas" placeholder="Describa los síntomas"></textarea>
                     </mat-form-field>
                   </td>
                 </tr>
@@ -62,16 +50,56 @@
                 <tr>
                 	<td colspan=2>
                     <mat-form-field class="demo-full-width">
-                      <mat-label>Diagnositco</mat-label>
-                      <textarea matInput [(ngModel)]=consulta.diagnostico name="diagnostico" placeholder="Describa su diagnostico"></textarea>
+                      <mat-label>Diagnóstico</mat-label>
+                      <textarea matInput [(ngModel)]=consulta.diagnostico name="diagnostico" placeholder="Describa su diagnóstico"></textarea>
                     </mat-form-field>
                   </td>
                 </tr>
 
+                 <tr>
+                	<td>
+                    <mat-form-field class="demo-full-width">
+                          <mat-label>Medicamento</mat-label>
+                          <mat-select [(ngModel)]=medicamento name="medicamento" [(value)] = medicamento.nombre>
+                            <mat-option *ngFor="let med of medicamentos" [value]="med.nombre">
+                              {{med.nombre}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </td>
+                  <td>
+                       <mat-form-field class="demo-full-width">
+                             <mat-label>Concentracion</mat-label>
+                            <input #medicamentoDesc [disabled]="medicamento == null" [(ngModel)]=medicamento.concentracion name="concentracionMedicamento" matInput placeholder="Concentracion">
+                        </mat-form-field>
+                    </td>
+                </tr>
+
+                 <tr>
+                	<td>
+                    <mat-form-field class="demo-full-width">
+                          <mat-label>Terapia</mat-label>
+                          <mat-select [(ngModel)]=terapia.nombre name="nombreTerapia" [(value)]=terapia.nombre >
+                            <mat-option *ngFor="let ter of terapias" [value]="ter.nombre">
+                              {{ter.nombre}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </td>
+                  <td>
+                       <mat-form-field class="demo-full-width">
+                             <mat-label>Descripcion</mat-label>
+                            <input #terapiaDesc [disabled]="terapia != null" [(ngModel)]=terapia.descripcion name="descripcionTerapia" matInput placeholder="Descripcion">
+                        </mat-form-field>
+                    </td>
+                </tr>
+
+
+
                 <tr>
                     <td colspan="2" class="content-center">
                       <div class="example-button-container">
-                        <button  mat-flat-button color="primary">Enviar</button>
+                        <button  mat-flat-button color="primary" (click)="editarConsulta()">Enviar</button>
                         </div>
                     </td>
                 </tr>

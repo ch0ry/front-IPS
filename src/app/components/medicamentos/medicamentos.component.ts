@@ -42,9 +42,9 @@ export class MedicamentosComponent {
 
 
   submit(){
-    console.log(this.medicamento.nombre);
-    console.log(this.medicamento.concentracion);
-    console.log(this.medicamento.descripcion);
+    this.service.crearMedicamento(this.medicamento).subscribe(() => {
+      alert("¡El medicamento fue creado con éxito!")
+    })
   }
 
 }

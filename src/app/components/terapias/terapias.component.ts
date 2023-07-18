@@ -46,8 +46,9 @@ export class TerapiasComponent {
 
 
   submit(){
-    console.log(this.terapia.nombre);
-    console.log(this.terapia.descripcion);
+    this.service.crearTerapia(this.terapia).subscribe(() => {
+      alert("¡Terapia creada con éxito!");
+    });
   }
 
 }
